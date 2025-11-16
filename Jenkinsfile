@@ -21,14 +21,14 @@ pipeline {
 
                 script {
                     withCredentials([usernamePassword(
-                        credentialsId: ${DOCKER_CREDENTIALS},
+                        credentialsId: DOCKER_CREDENTIALS,
                         usernameVariable: 'DOCKER_USR',
                         passwordVariable: 'DOCKER_PWD'
                     )]) {
                         echo 'Membangun image'
-                        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG}'
+                        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
 
-                        sh '''
+                        sh """
 
                             echo 'Login Docker'
                             echo ${DOCKER_PWD} | docker login -u ${DOCKER_USR} --password-stdin
@@ -38,7 +38,7 @@ pipeline {
 
                             echo 'Logout Docker
                             docker logout
-                        '''
+                        """
                     }
                 }
             }
