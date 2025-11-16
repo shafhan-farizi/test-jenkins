@@ -36,7 +36,7 @@ pipeline {
                             echo 'Push image ke docker hub'
                             docker push ${IMAGE_NAME}:${IMAGE_TAG}
 
-                            echo 'Logout Docker
+                            echo 'Logout Docker'
                             docker logout
                         """
                     }
