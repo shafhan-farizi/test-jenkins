@@ -9,6 +9,7 @@ pipeline {
 
             steps {
                 // sh 'docker login -u shafhan'
+                echo 'awikwaokwaok'
                 echo $DOCKER_CRED_USR
             }
         }
